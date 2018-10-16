@@ -1,10 +1,11 @@
 """" Plugins
-"" vim-plug install 
+"" vim-plug install
 "" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ""     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'airblade/vim-gitgutter'
@@ -28,7 +29,8 @@ call plug#end()
 """" Configs
 :syntax on
 :set number
-:colorscheme molokai
+:colorscheme dark
+:let loaded_matchparen = 1
 
 " On pressing tab, insert 2 spaces
 :set tabstop=2
@@ -37,7 +39,7 @@ call plug#end()
 "" fzf
 :inoremap <c-p> <Esc>:Files<CR>
 
-"" vim-indent-guides 
+"" vim-indent-guides
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_enable_on_vim_startup = 1
@@ -46,6 +48,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 " open NerdTree automatically
 autocmd StdinReadPre * let s:std_in=1
 autocmd vimenter * NERDTree
+let NERDTreeShowHidden=1
 " default focus to second window if file passed
 :au VimEnter * if argc() > 0 | wincmd l | endif
 " close NerdTree if it is the only window left
