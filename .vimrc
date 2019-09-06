@@ -15,9 +15,11 @@ Plug 'flazz/vim-colorschemes'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'beautify-web/js-beautify'
+Plug 'rizzatti/dash.vim'
 
 "" Go
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 "" JS/JSX
 Plug 'pangloss/vim-javascript'
@@ -47,7 +49,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 "" NerdTree
 " open NerdTree automatically
 autocmd StdinReadPre * let s:std_in=1
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 let NERDTreeShowHidden=1
 " default focus to second window if file passed
 :au VimEnter * if argc() > 0 | wincmd l | endif
@@ -56,27 +58,38 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 :inoremap <c-o> <Esc>:NERDTreeToggle<CR>
 
 "" Go
-let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
+let g:go_fmt_autosave = 0
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
-"" JS
 " ale linting
 let g:ale_sign_error = '●'
 let g:ale_sign_warning = '.'
-let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+let g:ale_linters = {
+\ 'jsx': ['stylelint', 'eslint'],
+\ 'javascript': ['stylelint', 'eslint'],
+\ 'go': ['gometalinter', 'goimport'],
+\ 'ruby': ['rubocop', 'brakeman'],
+\ 'graphql': ['eslint'],
+\ }
 let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_open_list = 1
-let g:ale_list_window_size = 5
+let g:ale_list_window_size = 3
 let g:ale_fixers = {
 \	'*': ['trim_whitespace'],
+\ 'json': ['prettier'],
 \	'javascript': ['prettier', 'eslint'],
+\ 'jsx': ['prettier', 'eslint'],
+\ 'go': ['goimports'],
+\ 'yaml': ['prettier'],
+\ 'graphql': ['prettier'],
 \ }
-let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 
-"" JSON
-
-autocmd BufWritePost *.json silent! execute ':%!python -m json.tool' | w
+"" JSON formatter
 :command JsonFmt :%!python -m json.tool
