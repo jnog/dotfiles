@@ -20,6 +20,7 @@ Plug 'rizzatti/dash.vim'
 
 "" Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+let g:go_version_warning = 0
 
 "" JS/JSX
 Plug 'pangloss/vim-javascript'
@@ -31,7 +32,7 @@ call plug#end()
 """" Configs
 :syntax on
 :set number
-:colorscheme dark
+:colorscheme monokai
 :let loaded_matchparen = 1
 
 " On pressing tab, insert 2 spaces
@@ -90,6 +91,7 @@ let g:ale_fixers = {
 \ 'graphql': ['prettier'],
 \ }
 let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
 
 "" JSON formatter
 :command JsonFmt :%!python -m json.tool
