@@ -32,6 +32,7 @@ call plug#end()
 """" Configs
 :syntax on
 :set number
+:set spell
 :colorscheme monokai
 :let loaded_matchparen = 1
 
