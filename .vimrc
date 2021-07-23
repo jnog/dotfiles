@@ -1,10 +1,11 @@
 """" Plugins
-
+"" vim-plug install
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
 
 call plug#begin('~/.vim/plugged')
 
@@ -20,6 +21,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'beautify-web/js-beautify'
 Plug 'rizzatti/dash.vim'
+Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
+Plug 'w0rp/ale'
+Plug 'jparise/vim-graphql'
 
 "" Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -28,20 +32,26 @@ let g:go_version_warning = 0
 "" JS/JSX
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'w0rp/ale'
 
 call plug#end()
 
 """" Configs
-:syntax on
-:set number
-:set spell
-:colorscheme monokai
-:let loaded_matchparen = 1
+syntax on
+set number
+set spell
+colorscheme spacegray
+let loaded_matchparen = 1
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set backspace=indent,eol,start
 
-" On pressing tab, insert 2 spaces
-:set tabstop=2
-:set expandtab
+"" ale
+" close loclist window when buffer is closed
+augroup CloseLoclistWindowGroup
+  autocmd!
+  autocmd QuitPre * if empty(&buftype) | lclose | endif
+augroup END
 
 "" fzf
 :inoremap <c-p> <Esc>:Files<CR>
@@ -69,6 +79,11 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+"" JS
+let g:javascript_plugin_flow = 1
+let g:jsx_ext_required = 0
+
 
 " ale linting
 let g:ale_sign_error = '●'
