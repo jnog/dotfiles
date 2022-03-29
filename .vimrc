@@ -23,18 +23,21 @@ Plug 'beautify-web/js-beautify'
 Plug 'rizzatti/dash.vim'
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
 Plug 'w0rp/ale'
+
+"" GraphQL
 Plug 'jparise/vim-graphql'
 
 "" Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_version_warning = 0
 
+"" Rust
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+
 "" JS/JSX
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-
-"" Rust
-Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
