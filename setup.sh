@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# install homebrew
 echo "Installing Homebrew..."
 if ! command -v brew &> /dev/null
 then
@@ -9,7 +8,6 @@ else
   echo "skipping: Homebrew already installed."
 fi
 
-# install and setup vim
 echo "Installing vim..."
 if ! command -v vim &> /dev/null
 then
@@ -18,6 +16,14 @@ else
   echo "skipping: vim already installed"
 fi
 
-# install Oh My Zsh
 echo "Installing Oh My Zsh..."
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "symlink .vimrc"
+ln -s .vimrc ~/.vimrc
+
+echo "symlink .vim"
+ln -s .vim ~/.vim
+
+echo "symlink .zshrc"
+ln -s .zshrc ~/.zshrc
