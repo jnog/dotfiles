@@ -1,10 +1,18 @@
 """" Plugins
 
 "" vim-plug install
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+if has('nvim')
+	if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+		silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+		  \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	 endif
+ else
+	if empty(glob('~/.vim/autoload/plug.vim'))
+		  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	endif
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -23,6 +31,7 @@ Plug 'beautify-web/js-beautify'
 Plug 'rizzatti/dash.vim'
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
 Plug 'w0rp/ale'
+Plug 'github/copilot.vim'
 
 "" GraphQL
 Plug 'jparise/vim-graphql'
