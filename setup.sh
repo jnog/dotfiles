@@ -38,7 +38,6 @@ echo "Installing Powerlevel10k theme"
 if ! command -v p10k &> /dev/null
 then
   brew install romkatv/powerlevel10k/powerlevel10k
-  echo "source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 else
   echo "skipping: Powerlevel10k already installed"
 fi
@@ -49,11 +48,20 @@ fi
 echo "symlink fonts"
 ln "./fonts/MesloLGS NF Regular.ttf" \
   "./fonts/MesloLGS NF Bold.ttf" \
-  "./fonts/MesloLGS NF Italics.ttf" \
+  "./fonts/MesloLGS NF Italic.ttf" \
   "./fonts/MesloLGS NF Bold Italic.ttf" \
   /Library/Fonts/
 
 ############## configs ###############
+echo "symlink .gitmessage"
+ln ./.gitmessage ~/.gitmessage
+git config --global commit.template ~/.gitmessage
+
+echo "symlink .zshrc"
+ln .zshrc ~/.zshrc
+
+echo "symlink .p10k.zsh"
+ln .p10k.zsh ~/.p10k.zsh
 
 echo "symlink .vimrc"
 ln .vimrc ~/.vimrc

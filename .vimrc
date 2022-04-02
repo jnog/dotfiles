@@ -60,6 +60,7 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set backspace=indent,eol,start
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 "" ale
 " close loclist window when buffer is closed
