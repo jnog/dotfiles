@@ -54,7 +54,7 @@ call plug#end()
 syntax on
 set number
 set spell
-colorscheme spacegray
+colorscheme molokai
 let loaded_matchparen = 1
 set expandtab
 set tabstop=2
