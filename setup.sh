@@ -60,6 +60,9 @@ git config --global commit.template ~/.gitmessage
 echo "symlink .zshrc"
 ln .zshrc ~/.zshrc
 
+echo "symlink .tmux.conf"
+ln .tmux.conf ~/.tmux.conf
+
 echo "symlink .p10k.zsh"
 ln .p10k.zsh ~/.p10k.zsh
 
