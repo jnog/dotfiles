@@ -10,6 +10,22 @@ else
   echo "skipping: Homebrew already installed."
 fi
 
+echo "Installing node..."
+if ! command -v node &> /dev/null
+then
+  brew install node
+else
+  echo "skipping: node already installed."
+fi
+
+echo "Installing yarn..."
+if ! command -v yarn &> /dev/null
+then
+  npm install --global yarn
+else
+  echo "skipping: yarn already installed."
+fi
+
 echo "Installing neovim..."
 if ! command -v nvim &> /dev/null
 then

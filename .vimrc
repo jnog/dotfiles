@@ -33,6 +33,10 @@ Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
 Plug 'w0rp/ale'
 Plug 'github/copilot.vim'
 
+"" Prettier
+Plug 'prettier/vim-prettier', {
+			\ 'do': 'yarn install --frozen-lockfile --production' }
+
 "" GraphQL
 Plug 'jparise/vim-graphql'
 
