@@ -63,10 +63,10 @@ fi
 
 echo "symlink fonts"
 ln "./fonts/MesloLGS NF Regular.ttf" \
-  "./fonts/MesloLGS NF Bold.ttf" \
-  "./fonts/MesloLGS NF Italic.ttf" \
-  "./fonts/MesloLGS NF Bold Italic.ttf" \
-  /Library/Fonts/
+   "./fonts/MesloLGS NF Bold.ttf" \
+   "./fonts/MesloLGS NF Italic.ttf" \
+   "./fonts/MesloLGS NF Bold Italic.ttf" \
+   /Library/Fonts/
 
 ############## configs ###############
 echo "symlink .gitmessage"

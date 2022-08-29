@@ -31,31 +31,35 @@ Plug 'beautify-web/js-beautify'
 Plug 'rizzatti/dash.vim'
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
 Plug 'w0rp/ale'
-Plug 'github/copilot.vim'
 
-"" Prettier
-Plug 'prettier/vim-prettier', {
-			\ 'do': 'yarn install --frozen-lockfile --production' }
+"" Fugitive
+Plug 'tpope/vim-fugitive'
+
+"" Github Copilot
+Plug 'github/copilot.vim'
 
 "" GraphQL
 Plug 'jparise/vim-graphql'
 
 "" Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-let g:go_version_warning = 0
-
-"" Rust
-Plug 'rust-lang/rust.vim'
-let g:rustfmt_autosave = 1
 
 "" JS/JSX
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
+"" Prettier
+Plug 'prettier/vim-prettier', {
+			\ 'do': 'yarn install --frozen-lockfile --production' }
+
+"" Rust
+Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 """" Configs
 syntax on
+set mouse=a
 set number
 set spell
 colorscheme molokai
@@ -67,7 +71,7 @@ set backspace=indent,eol,start
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 "" ale
-" close loclist window when buffer is closed
+" close localist window when buffer is closed
 augroup CloseLoclistWindowGroup
   autocmd!
   autocmd QuitPre * if empty(&buftype) | lclose | endif
@@ -92,6 +96,10 @@ let NERDTreeShowHidden=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 :inoremap <c-o> <Esc>:NERDTreeToggle<CR>
 
+"" JS
+let g:javascript_plugin_flow = 1
+let g:jsx_ext_required = 0
+
 "" Go
 let g:go_fmt_autosave = 0
 let g:go_highlight_functions = 1
@@ -99,11 +107,10 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_version_warning = 0
 
-"" JS
-let g:javascript_plugin_flow = 1
-let g:jsx_ext_required = 0
-
+"" Rust
+let g:rustfmt_autosave = 1
 
 " ale linting
 let g:ale_sign_error = '●'
