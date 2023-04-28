@@ -113,11 +113,12 @@ let g:go_version_warning = 0
 let g:rustfmt_autosave = 1
 
 " ale linting
-let g:ale_sign_error = '●'
-let g:ale_sign_warning = '.'
+let g:ale_sign_error = '🚨'
+let g:ale_sign_warning = '⚠️'
+let g:ale_statusline_format = ['🚨 %d', '⚠️ %d', '']
 let g:ale_linters = {
-\ 'jsx': ['stylelint', 'eslint'],
 \ 'javascript': ['stylelint', 'eslint'],
+\ 'typescript': ['stylelint', 'eslint', 'tsserver'],
 \ 'go': ['gometalinter', 'goimport'],
 \ 'ruby': ['rubocop', 'brakeman'],
 \ 'graphql': ['eslint'],
@@ -131,9 +132,13 @@ let g:ale_fixers = {
 \	'*': ['trim_whitespace'],
 \ 'json': ['prettier'],
 \	'javascript': ['prettier', 'eslint'],
-\ 'jsx': ['prettier', 'eslint'],
+\ 'javascriptreact': ['prettier', 'eslint'],
+\ 'typescript': ['prettier', 'eslint'],
+\ 'typescriptreact': ['prettier', 'eslint'],
 \ 'go': ['goimports'],
+\ 'ruby': ['rubocop'],
 \ 'yaml': ['prettier'],
+\ 'markdown': ['prettier'],
 \ 'graphql': ['prettier'],
 \ }
 let g:ale_sign_column_always = 1
