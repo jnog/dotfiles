@@ -23,14 +23,14 @@ Plug 'junegunn/goyo.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-airline/vim-airline'
-Plug 'flazz/vim-colorschemes'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'beautify-web/js-beautify'
 Plug 'rizzatti/dash.vim'
 Plug 'nestorsalceda/vim-strip-trailing-whitespaces'
 Plug 'w0rp/ale'
+
+""
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 "" Fugitive
 Plug 'tpope/vim-fugitive'
@@ -62,7 +62,6 @@ syntax on
 set mouse=a
 set number
 set spell
-colorscheme molokai
 let loaded_matchparen = 1
 set expandtab
 set tabstop=2
@@ -77,6 +76,9 @@ augroup CloseLoclistWindowGroup
   autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
 
+"" catppuccin
+colorscheme catppuccin-macchiato
+
 "" fzf
 :inoremap <c-p> <Esc>:Files<CR>
 
@@ -84,17 +86,6 @@ augroup END
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 3
 let g:indent_guides_enable_on_vim_startup = 1
-
-"" NerdTree
-" open NerdTree automatically
-autocmd StdinReadPre * let s:std_in=1
-" autocmd vimenter * NERDTree
-let NERDTreeShowHidden=1
-" default focus to second window if file passed
-:au VimEnter * if argc() > 0 | wincmd l | endif
-" close NerdTree if it is the only window left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-:inoremap <c-o> <Esc>:NERDTreeToggle<CR>
 
 "" JS
 let g:javascript_plugin_flow = 1
