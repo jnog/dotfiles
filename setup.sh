@@ -58,6 +58,8 @@ else
   echo "skipping: Powerlevel10k already installed"
 fi
 
+echo "Installing Tmux Plugin Manager"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ############## fonts ##############
 
