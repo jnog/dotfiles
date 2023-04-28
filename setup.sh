@@ -63,6 +63,10 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ############## fonts ##############
 
+echo "Installing Nerd Fonts"
+brew tap homebrew/cask-fonts
+brew install font-hack-nerd-font
+
 echo "symlink fonts"
 ln "./fonts/MesloLGS NF Regular.ttf" \
    "./fonts/MesloLGS NF Bold.ttf" \
