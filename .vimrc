@@ -77,7 +77,7 @@ augroup CloseLoclistWindowGroup
 augroup END
 
 "" catppuccin
-colorscheme catppuccin-macchiato
+colorscheme catppuccin_frappe
 
 "" fzf
 :inoremap <c-p> <Esc>:Files<CR>
@@ -127,7 +127,6 @@ let g:ale_fixers = {
 \ 'typescript': ['prettier', 'eslint'],
 \ 'typescriptreact': ['prettier', 'eslint'],
 \ 'go': ['goimports'],
-\ 'ruby': ['rubocop'],
 \ 'yaml': ['prettier'],
 \ 'markdown': ['prettier'],
 \ 'graphql': ['prettier'],

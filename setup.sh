@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCRIPT_DIR=$( cd -- "$( dirname -- "$BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 ############### installs ###############
 
 echo "Installing Homebrew..."
@@ -42,14 +44,6 @@ else
   echo "skipping: vim already installed"
 fi
 
-echo "Installing Oh My Zsh..."
-if ! $ZSH
-then
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-else
-  echo "skipping: Oh My Zsh already installed"
-fi
-
 echo "Installing Powerlevel10k theme"
 if ! command -v p10k &> /dev/null
 then
@@ -66,33 +60,32 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Installing Nerd Fonts"
 brew tap homebrew/cask-fonts
 brew install font-hack-nerd-font
-
 echo "symlink fonts"
-ln "./fonts/MesloLGS NF Regular.ttf" \
-   "./fonts/MesloLGS NF Bold.ttf" \
-   "./fonts/MesloLGS NF Italic.ttf" \
-   "./fonts/MesloLGS NF Bold Italic.ttf" \
+ ln -f "$SCRIPT_DIR/fonts/MesloLGS NF Regular.ttf" \
+   "$SCRIPT_DIR/fonts/MesloLGS NF Bold.ttf" \
+   "$SCRIPT_DIR/fonts/MesloLGS NF Italic.ttf" \
+   "$SCRIPT_DIR/fonts/MesloLGS NF Bold Italic.ttf" \
    /Library/Fonts/
 
 ############## configs ###############
 echo "symlink .gitmessage"
-ln ./.gitmessage ~/.gitmessage
+ ln -f $SCRIPT_DIR/.gitmessage ~/.gitmessage
 git config --global commit.template ~/.gitmessage
 
 echo "symlink .zshrc"
-ln .zshrc ~/.zshrc
+ ln -f $SCRIPT_DIR/.zshrc ~/.zshrc
 
 echo "symlink .tmux.conf"
-ln .tmux.conf ~/.tmux.conf
+ ln -f $SCRIPT_DIR/.tmux.conf ~/.tmux.conf
 
 echo "symlink .p10k.zsh"
-ln .p10k.zsh ~/.p10k.zsh
+ ln -f $SCRIPT_DIR/.p10k.zsh ~/.p10k.zsh
 
 echo "symlink .vimrc"
-ln .vimrc ~/.vimrc
+ ln -f $SCRIPT_DIR/.vimrc ~/.vimrc
 
 echo "symlink .vim"
-ln .vim ~/.vim
+ ln -f $SCRIPT_DIR/.vim ~/.vim
 
 echo "symlink .config/nvim/init.vim"
 NVIM_CONFIG_DIR=$HOME/.config/nvim
@@ -100,4 +93,12 @@ if [ ! -d $NVIM_CONFIG_DIR ]
 then
   mkdir -p $NVIM_CONFIG_DIR
 fi
-ln .config/nvim/init.vim $NVIM_CONFIG_DIR/init.vim
+ln -f $SCRIPT_DIR/.config/nvim/init.vim $NVIM_CONFIG_DIR/init.vim
+
+echo "symlink .zgen/zgen.zsh"
+ZGEN_DIR=$HOME/.zgen
+if [ ! -d $ZGEN_DIR ]
+then
+  mkdir -p $ZGEN_DIR
+fi
+ln -f $SCRIPT_DIR/.zgen/zgen.zsh $ZGEN_DIR/zgen.zsh
